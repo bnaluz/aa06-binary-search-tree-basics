@@ -36,23 +36,27 @@ class BinarySearchTree {
   }
 
   search(val, currentNode = this.root) {
-    if (this.root.val === val) {
-      return true;
-    }
+   if(!currentNode) {
+    return false;
+   } 
+   if ( val === currentNode.val) {
+    return true 
+   }
 
-    if (!this.root) {
-      return false;
-    }
-
-    if (val < this.root.val) {
-      return this.search(val, currentNode.left);
-    } else {
-      return this.search(val, currentNode.right);
-    }
+   if(val < currentNode.val) {
+    return this.search(val, currentNode.left)
+   } else {
+    return this.search(val, currentNode.right)
+   }
   }
 
   preOrderTraversal(currentNode = this.root) {
-    // Your code here
+    if(!currentNode) return
+      console.log(currentNode.val);
+
+      this.preOrderTraversal(currentNode.left);
+      this.preOrderTraversal(currentNode.right );
+    
   }
 
   inOrderTraversal(currentNode = this.root) {
